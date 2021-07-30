@@ -18,25 +18,28 @@ public class Load {
     private String truckType;
     private String noOfTrucks;
     private String weight;
-    //private String Date;
+    private String comment;
 
     public Load() {
 
     }
 
 
-    public Load(String loadingPoint,
+    public Load(
+                String loadingPoint,
                 String unloadingPoint,
                 String productType,
                 String truckType,
                 String noOfTrucks,
-                String weight) {
+                String weight,
+                String comment) {
         this.loadingPoint = loadingPoint;
         this.unloadingPoint = unloadingPoint;
         this.productType = productType;
         this.truckType = truckType;
         this.noOfTrucks = noOfTrucks;
         this.weight = weight;
+        this.comment=comment;
     }
  
     @Id
@@ -96,10 +99,18 @@ public class Load {
         this.weight = weight;
     }
 
+    @Column(name = "comment", nullable = false)
+    public String getComment() {
+        return comment;
+    }
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
-        return "Employee [shipperId=" + shipperId + ", loadingPoint=" + loadingPoint + ", unloadingPoint=" + unloadingPoint + ", productType=" + productType
-       + ", truckType=" + truckType + ", noOfTrucks=" + noOfTrucks + ", weight=" + weight + "]";
+        return "payload: [shipperId=" + shipperId + ", loadingPoint=" + loadingPoint + ", unloadingPoint=" + unloadingPoint + ", productType=" + productType
+       + ", truckType=" + truckType + ", noOfTrucks=" + noOfTrucks + ", weight=" + weight + ", optional:comment=" + comment + "]";
     }
- 
+
 }

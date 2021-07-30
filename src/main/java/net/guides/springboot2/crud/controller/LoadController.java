@@ -51,13 +51,13 @@ public class LoadController {
                                                @Valid @RequestBody Load loadDetails) throws ResourceNotFoundException {
         Load load = LoadRepository.findById(shipperId)
                 .orElseThrow(() -> new ResourceNotFoundException("Load not found for this shipper Id  :: " + shipperId));
-
         load.setProductType(loadDetails.getProductType());
         load.setUnloadingPoint(loadDetails.getUnloadingPoint());
         load.setLoadingPoint(loadDetails.getLoadingPoint());
         load.setTruckType(loadDetails.getTruckType());
         load.setNoOfTrucks(loadDetails.getNoOfTrucks());
         load.setWeight(loadDetails.getWeight());
+        load.setComment(loadDetails.getComment());
 
         final Load updatedLoad = LoadRepository.save(load);
         return ResponseEntity.ok(updatedLoad);
